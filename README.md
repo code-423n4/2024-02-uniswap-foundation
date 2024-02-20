@@ -1,31 +1,3 @@
-# ✨ So you want to run an audit
-
-This `README.md` contains a set of checklists for our audit collaboration.
-
-Your audit will use two repos: 
-- **an _audit_ repo** (this one), which is used for scoping your audit and for providing information to wardens
-- **a _findings_ repo**, where issues are submitted (shared with you after the audit) 
-
-Ultimately, when we launch the audit, this repo will be made public and will contain the smart contracts to be reviewed and all the information needed for audit participants. The findings repo will be made public after the audit report is published and your team has mitigated the identified issues.
-
-Some of the checklists in this doc are for **C4 (🐺)** and some of them are for **you as the audit sponsor (⭐️)**.
-
----
-
-# Audit setup
-
-## 🐺 C4: Set up repos
-- [ ] Create a new private repo named `YYYY-MM-sponsorname` using this repo as a template.
-- [ ] Rename this repo to reflect audit date (if applicable)
-- [ ] Rename auditt H1 below
-- [ ] Update pot sizes
-- [ ] Fill in start and end times in audit bullets below
-- [ ] Add link to submission form in audit details below
-- [ ] Add the information from the scoping form to the "Scoping Details" section at the bottom of this readme.
-- [ ] Add matching info to the Code4rena site
-- [ ] Add sponsor to this private repo with 'maintain' level access.
-- [ ] Send the sponsor contact the url for this repo to follow the instructions below and add contracts here. 
-- [ ] Delete this checklist.
 
 # Repo setup
 
@@ -59,16 +31,16 @@ Some of the checklists in this doc are for **C4 (🐺)** and some of them are fo
 ---
 
 # Uniswap Foundation audit details
-- Total Prize Pool: $98000 in USDC
-  - HM awards: $74750 in USDC
-  - Analysis awards: $1500 in USDC
+- Total Prize Pool: $98,000 in USDC
+  - HM awards: $74,750 in USDC
+  - Analysis awards: $1,500 in USDC
   - QA awards: $750 in USDC
-  - Bot Race awards: $2250 in USDC
+  - Bot Race awards: $2,250 in USDC
   - Gas awards: $750 in USDC
-  - Judge awards: $5600 in USDC
-  - Lookout awards: XXX XXX USDC (Notion: Sum of Pre-sort fee + Pre-sort early bonus)
+  - Judge awards: $5,600 in USDC
+  - Lookout awards: $2,400 USDC
   - Scout awards: $500 in USDC
-  - Mitigation Review: $9500 in USDC (*Opportunity goes to top 3 certified wardens based on placement in this audit.*)
+  - Mitigation Review: $9,500 in USDC (*Opportunity goes to top 3 certified wardens based on placement in this audit.*)
 - Join [C4 Discord](https://discord.gg/code4rena) to register
 - Submit findings [using the C4 form](https://code4rena.com/contests/2024-02-uniswap-foundation/submit)
 - [Read our guidelines for more details](https://docs.code4rena.com/roles/wardens)
@@ -79,7 +51,7 @@ Some of the checklists in this doc are for **C4 (🐺)** and some of them are fo
 
 The 4naly3er report can be found [here](https://github.com/code-423n4/2024-02-uniswap-foundation/blob/main/4naly3er-report.md).
 
-Automated findings output for the audit can be found [here](https://github.com/code-423n4/YYYY-MM-contest-candidate/blob/main/bot-report.md) within 24 hours of audit opening.
+Automated findings output for the audit can be found [here](https://github.com/code-423n4/2024-02-uniswap-foundation/blob/main/bot-report.md) within 24 hours of audit opening.
 
 _Note for C4 wardens: Anything included in this `Automated Findings / Publicly Known Issues` section is considered a publicly known issue and is ineligible for awards._
 
@@ -140,21 +112,21 @@ _Note for C4 wardens: Anything included in this `Automated Findings / Publicly K
 [ ⭐️ SPONSORS: please confirm/edit the information below. ]
 
 ```
-- If you have a public code repo, please share it here:  
-- How many contracts are in scope?:   
-- Total SLoC for these contracts?:  
-- How many external imports are there?:  
-- How many separate interfaces and struct definitions are there for the contracts within scope?:  
-- Does most of your code generally use composition or inheritance?:   
-- How many external calls?:   
-- What is the overall line coverage percentage provided by your tests?:
-- Is this an upgrade of an existing system?:
+- If you have a public code repo, please share it here: Private  
+- How many contracts are in scope?: 16    
+- Total SLoC for these contracts?: 750  
+- How many external imports are there?: 4  
+- How many separate interfaces and struct definitions are there for the contracts within scope?: 4  
+- Does most of your code generally use composition or inheritance?: Inheritance   
+- How many external calls?: 1   
+- What is the overall line coverage percentage provided by your tests?: 100
+- Is this an upgrade of an existing system?: False
 - Check all that apply (e.g. timelock, NFT, AMM, ERC20, rollups, etc.): 
-- Is there a need to understand a separate part of the codebase / get context in order to audit this part of the protocol?:   
-- Please describe required context:   
-- Does it use an oracle?:  
-- Describe any novel or unique curve logic or mathematical models your code uses: 
-- Is this either a fork of or an alternate implementation of another project?:   
+- Is there a need to understand a separate part of the codebase / get context in order to audit this part of the protocol?: True - Fees are collected from individual uniswap v3 pools via a function on one of the new contracts. That function calls the 'collectProtocol' function on pool contracts.   
+- Please describe required context: Fees are collected from individual uniswap v3 pools via a function on one of the new contracts. That function calls the 'collectProtocol' function on pool contracts.   
+- Does it use an oracle?: No  
+- Describe any novel or unique curve logic or mathematical models your code uses: N/A
+- Is this either a fork of or an alternate implementation of another project?: True   
 - Does it use a side-chain?:
 - Describe any specific areas you would like addressed:
 ```
@@ -167,4 +139,4 @@ _Note for C4 wardens: Anything included in this `Automated Findings / Publicly K
 
 ## Miscellaneous
 
-Employees of [SPONSOR NAME] and employees' family members are ineligible to participate in this audit.
+Employees of Uniswap Foundation and employees' family members are ineligible to participate in this audit.
