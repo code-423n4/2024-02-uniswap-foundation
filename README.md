@@ -46,7 +46,7 @@ _Note for C4 wardens: Anything included in this `Automated Findings / Publicly K
 # UniStaker
 
 <div align="center">
-	<img width="500" src="https://github.com/code-423n4/2024-02-uniswap-foundation/blob/readme/unistaker.webp" alt="UniStaker Banner">
+	<img width="500" src="https://github.com/code-423n4/2024-02-uniswap-foundation/blob/main/readme/unistaker.webp" alt="UniStaker Banner">
 	<br />
 </div>
 
@@ -105,7 +105,7 @@ flowchart TD
 
 ### `V3FactoryOwner`
 
-The [`V3FactoryOwner`](src/V3FactoryOwner.sol) contract is designed to act as the owner of the Uniswap V3 Factory. Governance can opt to transfer ownership of the factory to an instance of this contract. While the owner of the factory becomes the `V3FactoryOwner`, the admin of the `V3FactoryOwner` will be governance. In this way, governance retains the right to configure pool protocol fees via permissioned passthrough methods.
+The [`V3FactoryOwner`](https://github.com/code-423n4/2024-02-uniswap-foundation/blob/main/src/V3FactoryOwner.sol) contract is designed to act as the owner of the Uniswap V3 Factory. Governance can opt to transfer ownership of the factory to an instance of this contract. While the owner of the factory becomes the `V3FactoryOwner`, the admin of the `V3FactoryOwner` will be governance. In this way, governance retains the right to configure pool protocol fees via permissioned passthrough methods.
 
 The `V3FactoryOwner` has a public method which enables _anyone_ to claim the protocol fees which have accrued for a given pool. In order to claim the fees, the caller must pay a fixed amount of a token defined when the `V3FactoryOwner` is deployed (the `PAYOUT_TOKEN`). This sets up a continuous "race" wherein external parties will compete to claim the fees accrued by each pool once it becomes profitable to do so.
 
@@ -113,7 +113,7 @@ Concretely, if the `PAYOUT_TOKEN` was WETH, a third party would claim a pool's f
 
 ### `UniStaker`
 
-The mechanics of the [`UniStaker`](src/UniStaker.sol) contract are heavily inspired by the Synthetix [`StakingRewards.sol`](https://github.com/Synthetixio/synthetix/blob/develop/contracts/StakingRewards.sol) implementation. The contract manages the distribution of rewards to stakers by dripping those rewards out over a fixed period of time. This period restarts if more rewards are distributed (e.g. by the public fee claiming mechanism on `V3FactoryOwner` detailed above). This Synthetix style staking mechanism has been widely discussed in the DeFi ecosystem and should be reviewed by any party seeking to understand the mechanics of UniStaker.
+The mechanics of the [`UniStaker`](https://github.com/code-423n4/2024-02-uniswap-foundation/blob/main/src/UniStaker.sol) contract are heavily inspired by the Synthetix [`StakingRewards.sol`](https://github.com/Synthetixio/synthetix/blob/develop/contracts/StakingRewards.sol) implementation. The contract manages the distribution of rewards to stakers by dripping those rewards out over a fixed period of time. This period restarts if more rewards are distributed (e.g. by the public fee claiming mechanism on `V3FactoryOwner` detailed above). This Synthetix style staking mechanism has been widely discussed in the DeFi ecosystem and should be reviewed by any party seeking to understand the mechanics of UniStaker.
 
 ```mermaid
 flowchart LR
@@ -135,7 +135,7 @@ flowchart LR
 
 The UniStaker contract diverges from `StakingRewards.sol` in several ways:
 
-First, UniStaker enfranchises depositors by allowing them to retain their UNI governance rights. It does this by depositing staked tokens to an instance of [`DelegationSurrogate`](src/DelegationSurrogate.sol), a dummy contract whose sole purpose is to delegate voting weight to a designated entity. UniStaker requires stakers to delegate to themselves or another address. They cannot delegate to the zero address.
+First, UniStaker enfranchises depositors by allowing them to retain their UNI governance rights. It does this by depositing staked tokens to an instance of [`DelegationSurrogate`](https://github.com/code-423n4/2024-02-uniswap-foundation/blob/main/src/DelegationSurrogate.sol), a dummy contract whose sole purpose is to delegate voting weight to a designated entity. UniStaker requires stakers to delegate to themselves or another address. They cannot delegate to the zero address.
 
 Second, UniStaker allows depositors to designate the beneficiary of their staking rewards. Effectively, any given deposit can earn rewards on behalf of any designated address.
 
@@ -159,19 +159,19 @@ Finally, UniStaker is designed to accept rewards from any number of addresses de
 | Contract | SLOC | Purpose | Libraries used |  
 | ----------- | ----------- | ----------- | ----------- |
 | _Contracts (3)_ |  |  |  |
-| [src/UniStaker.sol](https://github.com/code-423n4/2024-02-uniswap-foundation/blob/src/UniStaker.sol) | 423 | This contract manages the distribution of rewards to stakers. | [`@openzeppelin/*`](https://openzeppelin.com/contracts/) |
-| [src/V3FactoryOwner.sol](https://github.com/code-423n4/2024-02-uniswap-foundation/blob/src/V3FactoryOwner.sol) | 87 | A contract that can serve as the owner of the Uniswap v3 factory and manages configuration and collection of protocol pool fees. | [`@openzeppelin/*`](https://openzeppelin.com/contracts/) |
-| [src/DelegationSurrogate.sol](https://github.com/code-423n4/2024-02-uniswap-foundation/blob/src/DelegationSurrogate.sol) | 8 | A dead-simple contract whose only purpose is to hold governance tokens on behalf of stakers while delegating voting power to a specific delegatee. | None |
+| [src/UniStaker.sol](https://github.com/code-423n4/2024-02-uniswap-foundation/blob/main/src/UniStaker.sol) | 423 | This contract manages the distribution of rewards to stakers. | [`@openzeppelin/*`](https://openzeppelin.com/contracts/) |
+| [src/V3FactoryOwner.sol](https://github.com/code-423n4/2024-02-uniswap-foundation/blob/main/src/V3FactoryOwner.sol) | 87 | A contract that can serve as the owner of the Uniswap v3 factory and manages configuration and collection of protocol pool fees. | [`@openzeppelin/*`](https://openzeppelin.com/contracts/) |
+| [src/DelegationSurrogate.sol](https://github.com/code-423n4/2024-02-uniswap-foundation/blob/main/src/DelegationSurrogate.sol) | 8 | A dead-simple contract whose only purpose is to hold governance tokens on behalf of stakers while delegating voting power to a specific delegatee. | None |
 | _Interfaces (4)_ |  |  |  |
-| [src/interfaces/IERC20Delegates.sol](https://github.com/code-423n4/2024-02-uniswap-foundation/blob/src/interfaces/IERC20Delegates.sol) | 22 | A subset of the ERC20Votes-style governance token to which UNI conforms. |  |
-| [src/interfaces/INotifiableRewardReceiver.sol](https://github.com/code-423n4/2024-02-uniswap-foundation/blob/src/interfaces/INotifiableRewardReceiver.sol) | 4 | The communication interface between the V3FactoryOwner contract and the UniStaker contract. |  |
-| [src/interfaces/IUniswapV3FactoryOwnerActions.sol](https://github.com/code-423n4/2024-02-uniswap-foundation/blob/src/interfaces/IUniswapV3FactoryOwnerActions.sol) | 6 | Required subset of the interface for the Uniswap V3 Factory. |  |
-| [src/interfaces/IUniswapV3PoolOwnerActions.sol](https://github.com/code-423n4/2024-02-uniswap-foundation/blob/src/interfaces/IUniswapV3PoolOwnerActions.sol) | 7 | Interface for pool methods that may only be called by the factory owner. |  |
+| [src/interfaces/IERC20Delegates.sol](https://github.com/code-423n4/2024-02-uniswap-foundation/blob/main/src/interfaces/IERC20Delegates.sol) | 22 | A subset of the ERC20Votes-style governance token to which UNI conforms. |  |
+| [src/interfaces/INotifiableRewardReceiver.sol](https://github.com/code-423n4/2024-02-uniswap-foundation/blob/main/src/interfaces/INotifiableRewardReceiver.sol) | 4 | The communication interface between the V3FactoryOwner contract and the UniStaker contract. |  |
+| [src/interfaces/IUniswapV3FactoryOwnerActions.sol](https://github.com/code-423n4/2024-02-uniswap-foundation/blob/main/src/interfaces/IUniswapV3FactoryOwnerActions.sol) | 6 | Required subset of the interface for the Uniswap V3 Factory. |  |
+| [src/interfaces/IUniswapV3PoolOwnerActions.sol](https://github.com/code-423n4/2024-02-uniswap-foundation/blob/main/src/interfaces/IUniswapV3PoolOwnerActions.sol) | 7 | Interface for pool methods that may only be called by the factory owner. |  |
 
 
 ## Out of scope
 
-* [`scripts/*`](https://github.com/code-423n4/2024-02-uniswap-foundation/blob/scripts)
+* [`scripts/*`](https://github.com/code-423n4/2024-02-uniswap-foundation/blob/main/scripts)
 
 
 # Additional Context
