@@ -45,14 +45,9 @@ _Note for C4 wardens: Anything included in this `Automated Findings / Publicly K
 
 # UniStaker
 
-<div align="center">
-	<img width="500" src="https://github.com/code-423n4/2024-02-uniswap-foundation/blob/main/readme/unistaker.webp" alt="UniStaker Banner">
-	<br />
-</div>
+**Uniswap V3 protocol fee collection and distribution via UNI staking.**
 
-<p align="center">
-	<b>Uniswap V3 protocol fee collection and distribution via UNI staking.</b>
-</p>
+![UniStaker Banner](https://github.com/code-423n4/2024-02-uniswap-foundation/blob/main/unistaker.png?raw=true)
 
 ## What it does
 
