@@ -219,22 +219,11 @@ Finally, UniStaker is designed to accept rewards from any number of addresses de
 
 ```
 - If you have a public code repo, please share it here: https://github.com/uniswapfoundation/unistaker (will be public at audit start date)
-- How many contracts are in scope?: 3
-- Total SLoC for these contracts?: 557
-- How many external imports are there?: 4
-- How many separate interfaces and struct definitions are there for the contracts within scope?: 5
-- Does most of your code generally use composition or inheritance?: Inheritance
-- How many external calls?: 4 (including token contracts)
 - What is the overall line coverage percentage provided by your tests?: 100
 - Is this an upgrade of an existing system?: False
-- Check all that apply (e.g. timelock, NFT, AMM, ERC20, rollups, etc.):
 - Is there a need to understand a separate part of the codebase / get context in order to audit this part of the protocol?: True
 - Please describe required context: Fees are collected from individual Uniswap V3 Pools via a function on one of the new contracts. That function calls the 'collectProtocol' function on pool contracts. The contracts will interact with the Uniswap V3 Pools and Uniswap V3 Factory. The contracts will administered by Uniswap DAO Governance.
-- Does it use an oracle?: No
-- Describe any novel or unique curve logic or mathematical models your code uses: N/A
 - Is this either a fork of or an alternate implementation of another project?: True - The staking model is heavily borrowed, but modified
-- Does it use a side-chain?: False
-- Describe any specific areas you would like addressed:
 ```
 
 # Tests
