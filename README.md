@@ -12,7 +12,7 @@
   - Scout awards: $500 in USDC
   - Mitigation Review: $9,500 in USDC (*Opportunity goes to top 3 certified wardens based on placement in this audit.*)
 - Join [C4 Discord](https://discord.gg/code4rena) to register
-- Submit findings [using the C4 form](https://code4rena.com/contests/2024-02-uniswap-foundation/submit)
+- Submit findings [using the C4 form](https://code4rena.com/contests/2024-02-unistaker-infrastructure/submit)
 - [Read our guidelines for more details](https://docs.code4rena.com/roles/wardens)
 - Starts February 23, 2024 20:00 UTC
 - Ends March 4, 2024 20:00 UTC
