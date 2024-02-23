@@ -171,7 +171,7 @@ Finally, UniStaker is designed to accept rewards from any number of addresses de
 
 ## Out of scope
 
-* [`scripts/*`](https://github.com/code-423n4/2024-02-uniswap-foundation/blob/main/scripts)
+* [`scripts/*`](https://github.com/code-423n4/2024-02-uniswap-foundation/blob/main/script)
 
 
 # Additional Context
