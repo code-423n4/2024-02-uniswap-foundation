@@ -1,8 +1,8 @@
 
 # Uniswap Foundation audit details
 
-- Total Prize Pool: $36,000 in USDC
-  - HM awards: $13,000 in USDC
+- Total Prize Pool: $36,000 - $92,000 in USDC 
+  - HM awards: $13,000 - $69,000 in USDC (see note below)
   - Analysis awards: $1,500 in USDC
   - QA awards: $750 in USDC
   - Bot Race awards: $2,250 in USDC
@@ -18,8 +18,8 @@
 - Ends March 4, 2024 20:00 UTC
 
 ❗️❗️ Please note: 
-- If ANY valid Medium severity issues are found, the HM award will increase to $45,000. The Total Prize Pool increases to $68,000 in USDC.
-- If ANY valid Medium + High severity issues are found, the HM award will increase to $69,000. The Total Prize Pool increases to $92,000 in USDC.
+- If ANY valid Medium severity issues are found, the HM award will increase to &#36;45,000. The Total Prize Pool increases to &#36;68,000 in USDC.
+- If ANY valid Medium + High severity issues are found, the HM award will increase to &#36;69,000. The Total Prize Pool increases to &#36;92,000 in USDC.
 - All other awards will be capped at the amounts listed above.
 
 ## Automated Findings / Publicly Known Issues
