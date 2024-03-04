@@ -2,7 +2,7 @@
 # Uniswap Foundation audit details
 
 - Total Prize Pool: &#36;98,000 in USDC 
-  - HM awards: &#36;75,500 in USDC (see note below)
+  - HM awards: &#36;75,500 in USDC
   - Analysis awards: $1,500 in USDC
   - QA awards: $750 in USDC
   - Bot Race awards: $2,250 in USDC
@@ -16,11 +16,6 @@
 - [Read our guidelines for more details](https://docs.code4rena.com/roles/wardens)
 - Starts February 23, 2024 20:00 UTC
 - Ends March 5, 2024 20:00 UTC
-
-❗️❗️ Please note: 
-- If ANY valid Medium severity issues are found, the HM award will increase to &#36;45,000. The Total Prize Pool increases to &#36;68,000 in USDC.
-- If ANY valid Medium + High severity issues are found, the HM award will increase to &#36;69,000. The Total Prize Pool increases to &#36;92,000 in USDC.
-- All other awards will be capped at the amounts listed above.
 
 ## Automated Findings / Publicly Known Issues
 
