@@ -1,8 +1,8 @@
 
 # Uniswap Foundation audit details
 
-- Total Prize Pool: &#36;36,000 - &#36;92,000 in USDC 
-  - HM awards: &#36;13,000 - &#36;69,000 in USDC (see note below)
+- Total Prize Pool: &#36;98,000 in USDC 
+  - HM awards: &#36;75,500 in USDC (see note below)
   - Analysis awards: $1,500 in USDC
   - QA awards: $750 in USDC
   - Bot Race awards: $2,250 in USDC
