@@ -15,7 +15,7 @@
 - Submit findings [using the C4 form](https://code4rena.com/contests/2024-02-unistaker-infrastructure/submit)
 - [Read our guidelines for more details](https://docs.code4rena.com/roles/wardens)
 - Starts February 23, 2024 20:00 UTC
-- Ends March 4, 2024 20:00 UTC
+- Ends March 5, 2024 20:00 UTC
 
 ❗️❗️ Please note: 
 - If ANY valid Medium severity issues are found, the HM award will increase to &#36;45,000. The Total Prize Pool increases to &#36;68,000 in USDC.
