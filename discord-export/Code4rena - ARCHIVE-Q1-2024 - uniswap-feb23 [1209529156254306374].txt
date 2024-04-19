@@ -1,0 +1,1777 @@
+==============================================================
+Guild: Code4rena
+Channel: ARCHIVE-Q1-2024 / uniswap-feb23
+==============================================================
+
+[02/23/2024 15:03] kartoonjoy (pinned)
+👋 Hello and welcome to the audit channel for the $92,000 in USDC **UniStaker Infrastructure** audit!
+
+📆 Audit opens 02/23/2024 20:00 (20:00 UTC) and runs through 03/04/2024 20:00 (20:00 UTC) (10 days).
+
+Please give a warm welcome to the Uniswap Foundation team, particularly @bendi, @Keating, @wildmolasses, who will be available for questions either here in the channel or via a PRIVATE thread in the EST timezone(s).
+
+We'll be posting relevant links, documentation, etc. here, so if you intend to participate in this audit, consider enabling notifications for this channel. 🐺 ⏰
+
+Audit Page: https://code4rena.com/audits/2024-02-unistaker-infrastructure#top
+
+{Reactions}
+🔥 (24) 👀 (15) 
+
+[02/23/2024 15:04] kartoonjoy
+Pinned a message.
+
+
+[02/23/2024 19:32] kartoonjoy
+Wardens, just a reminder to please communicate with the sponsor either here or in a PRIVATE thread only. DMs are subject to go unanswered.
+
+If you have a question of how to create a private thread, please ask in the #❓questions channel. Thanks!
+
+{Reactions}
+✅ 
+
+[02/23/2024 20:02] C4 (pinned)
+**Automated Findings / Publicly Known Issues**
+
+Reminder: all [Automated Findings / Publicly Known Issues](https://github.com/code-423n4/2024-02-uniswap-foundation#automated-findings--publicly-known-issues) are out of scope and ineligible for awards.
+
+
+[02/23/2024 20:02] kartoonjoy
+Pinned a message.
+
+
+[02/23/2024 20:12] pfapostol
+If you stuck:
+```
+npm install @uniswap/v3-periphery
+
+put to remappings.txt
+v3-periphery/=node_modules/@uniswap/v3-periphery/contracts/
+```
+
+{Reactions}
+🔥 (5) 
+
+[02/23/2024 20:38] sovaslava9
+@kartoonjoy | C4🎇🎇
+
+{Attachments}
+Code4rena - ARCHIVE-Q1-2024 - uniswap-feb23 [1209529156254306374].txt_Files/image-C4CDF.png
+
+{Reactions}
+thankyou 
+
+[02/23/2024 20:52] poeaudits
+Are the flowcharts supposed to just be text? Also
+```
+  B --> E[...]
+    style E fill:transparent,stroke:transparent,stroke-width:4px
+    classDef new stroke:#F7F,padding:10px,stroke-width:3px,line-height:3.5,font-weight:bold
+    B --> F[(Pool N)]
+```
+
+
+[02/23/2024 20:54] hgq2wnl
+inb4 xss
+
+{Reactions}
+👍 
+
+[02/23/2024 21:00] hgq2wnl
+I think there is a missing starting <p> tag and the </p> tag is within the double quote (ignore if descriptions are not manually pasted)
+
+
+[02/23/2024 21:01] poeaudits
+This dependency in some of the test contracts does not seem to be included:
+```
+import {ISwapRouter} from "v3-periphery/interfaces/ISwapRouter.sol";
+```
+
+
+[02/23/2024 21:06] tychaios.
+Yeah, you need to install the periphery and core contracts and then adjust remappings
+
+{Reactions}
+👍 
+
+[02/23/2024 21:18] bendifran (pinned)
+These are mermaid diagrams. They render on GitHub or any platform that supports mermaid. Also available in the docs: https://docs.unistaker.io/architecture/overview
+
+{Embed}
+https://docs.unistaker.io/architecture/overview
+UniStaker
+Uniswap protocol fee collection and reward distribution via UNI staking.
+
+{Reactions}
+💜 (6) 
+
+[02/23/2024 21:18] poeaudits
+Learn something new every day, ty.
+
+
+[02/23/2024 21:20] kartoonjoy
+Pinned a message.
+
+
+[02/23/2024 21:32] forgebyola
+So the mystery audit was uniswap eh
+
+{Reactions}
+💯 (2) 
+
+[02/23/2024 22:04] tychaios.
+I'm always amazed of how elegant the Uniswap codebase is, not expecting to find many bugs but to learn one thing or two hahaha
+
+{Reactions}
+❤️ 
+
+[02/24/2024 02:28] 0xsimeon
+LFG
+
+
+[02/24/2024 02:33] Message Wolf#0225 (pinned)
+**Automated Findings / Publicly Known Issues**
+
+Automated findings output for the audit can be found [here](https://github.com/code-423n4/2024-02-uniswap-foundation/blob/main/bot-report.md).
+
+*Note for C4 wardens: Anything included in the automated findings output is considered a publicly known issue and is ineligible for awards.*
+
+
+[02/24/2024 05:22] daniel526
+what am I not doing right?
+```
+remappings = [
+    "openzeppelin/=lib/openzeppelin-contracts/contracts",
+    "v3-periphery=node_modules/@uniswap/v3-periphery/contracts"
+  ]
+```
+@Tychai0s
+
+```
+[⠒] Compiling 75 files with 0.8.23
+[⠢] Solc 0.8.23 finished in 1.57s
+Error: 
+Compiler run failed:
+Error (6275): Source "v3-periphery/interfaces/ISwapRouter.sol" not found: File not found. Searched the following locations: "/home/daniel/Uniswap/2024-02-uniswap-foundation".
+ParserError: Source "v3-periphery/interfaces/ISwapRouter.sol" not found: File not found. Searched the following locations: "/home/daniel/Uniswap/2024-02-uniswap-foundation".
+ --> test/helpers/Constants.sol:4:1:
+  |
+4 | import {ISwapRouter} from "v3-periphery/interfaces/ISwapRouter.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Error (6275): Source "v3-periphery/interfaces/ISwapRouter.sol" not found: File not found. Searched the following locations: "/home/daniel/Uniswap/2024-02-uniswap-foundation".
+ParserError: Source "v3-periphery/interfaces/ISwapRouter.sol" not found: File not found. Searched the following locations: "/home/daniel/Uniswap/2024-02-uniswap-foundation".
+ --> test/helpers/IntegrationTest.sol:7:1:
+  |
+7 | import {ISwapRouter} from "v3-periphery/interfaces/ISwapRouter.sol";
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+```
+
+
+[02/24/2024 07:07] 0xsorrynotsorry
+Pinned a message.
+
+{Reactions}
+thankyou 
+
+[02/24/2024 12:32] inimys
+Maybe missing "/" after "contracts"?
+
+
+[02/24/2024 13:24] forgebyola
+What are we to fill into proposer_address?
+
+
+[02/24/2024 13:54] forgebyola
+How are the signatures verified? Offchain?
+
+
+[02/24/2024 14:06] al_qa_qa
+Any idea on how to increase the speed of testing guys?
+
+I just added a single unit test, and for each little modification, I need to wait 20 second for the compilation to finish.
+
+
+[02/24/2024 14:08] inimys
+How are you testing?
+
+
+[02/24/2024 14:08] inimys
+I mean are you running all tests at once, or just match testing?
+
+
+[02/24/2024 14:24] al_qa_qa
+I made the test myself, to understand how the invariants changes on action
+
+
+[02/24/2024 14:30] mctoady
+you can forge test --mt $TEST_NAME, but unsure if that will cut down on compile time
+
+
+[02/24/2024 14:32] al_qa_qa
+I do this, and it takes 10 seconds now. IDK why it takes that long. I noticed this problem recently.
+
+
+[02/24/2024 15:21] tychaios.
+Why do you have node_modules in there? Did you initialize a HH project?
+
+
+[02/24/2024 15:21] daniel526
+no
+
+
+[02/24/2024 15:22] tychaios.
+I had to install both `v3-core` and `v3-periphery` and these are my remappings:
+`remappings = ["openzeppelin/=lib/openzeppelin-contracts/contracts", "@uniswap/v3-core/=lib/v3-core/"]`
+
+
+[02/24/2024 15:23] tychaios.
+LMK if it works for you
+
+
+[02/24/2024 16:01] sp1cymeatball
+Does this codebase include  TOB audit fixes?
+
+
+[02/24/2024 17:07] visualbits
+Set remapping for `v3-periphery`
+
+
+[02/24/2024 17:07] tychaios.
+You don't need to
+
+
+[02/24/2024 17:08] tychaios.
+Mine is working fine, @Daniel526 's is not
+
+{Reactions}
+👍 
+
+[02/24/2024 19:06] forgebyola
+Where're the sponsors though?
+
+
+[02/24/2024 19:06] forgebyola
+We need some questions answered
+
+
+[02/24/2024 19:28] volokinn
+It's the weekend, I guess we will have our answers on Monday. Just make sure to write all your questions down so you don't forget them.
+
+{Reactions}
+👍🏼 
+
+[02/24/2024 19:40] bendifran
+There were no fixes implemented, beyond some minor natspec cleanup and improving the comments
+
+{Reactions}
+👍 (2) 
+
+[02/24/2024 19:53] bendifran
+I've answered all the private questions I've received. Let me know if there are any others here.
+
+By the way, looks like the installation of the `uniswap/v3-core` and the `uniswap/v3-periphery` dependencies may not have translated properly to the codearena repo. You may have to forge install each. And your remappings in `foundry.toml` should look like this:
+
+```
+  remappings = [
+    "openzeppelin/=lib/openzeppelin-contracts/contracts",
+    "uniswap-periphery/=lib/v3-periphery/contracts",
+    "@uniswap/v3-core=lib/v3-core",
+  ]
+```
+
+{Reactions}
+hi5 (2) 
+
+[02/24/2024 19:55] bendifran
+As others have mentioned, to reduce test times, use `--mt`, `--mp`, or `--mc` to match the test, test file, or test contract you want to run specifically. The invariant tests take a while to run, as do the integration tests. The integration tests will make a lot of RPC calls. Other tests should be pretty quick and don't make RPC calls.
+
+
+[02/24/2024 20:08] forgebyola
+Okay no problem
+
+
+[02/24/2024 20:26] forgebyola
+@bendi
+
+
+[02/24/2024 20:32] bendifran
+Which signatures are you referring to?
+
+
+[02/24/2024 20:33] forgebyola
+for the permit functions
+
+
+[02/25/2024 00:01] mctoady
+They're verified in the ERC20 Permit function itself (think $UNI's might be slightly different but with same functionality)
+https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC20Permit.sol#L44
+
+{Embed}
+https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/extensions/ERC20Permit.sol
+openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit...
+OpenZeppelin Contracts is a library for secure smart contract development. - OpenZeppelin/openzeppelin-contracts
+Code4rena - ARCHIVE-Q1-2024 - uniswap-feb23 [1209529156254306374].txt_Files/openzeppelin-contracts-D9BD0
+
+{Reactions}
+👍🏼 (2) 
+
+[02/25/2024 05:35] guy_in0xnito
+In the protocol users pay fees to claim fees ?
+
+
+[02/25/2024 06:28] 0x11singh99
+Hi @kartoonjoy | C4🎇🎇 
+Why total awards says $92000 and  and total prizepool $98000  on contest page ? which one is correct ?
+Also on contest page increasing awards  when hms found  line not mentioned as mentioned in rsvp ? ie. pool is fixed wheather hms found or not ?
+
+
+[02/25/2024 08:14] nmirchev8
+Hey
+What would be PAYOUT_TOKEN?
+
+
+[02/25/2024 08:32] mctoady
+
+
+{Attachments}
+Code4rena - ARCHIVE-Q1-2024 - uniswap-feb23 [1209529156254306374].txt_Files/Screenshot_2024-02-25_at_17.32.18-0406E.png
+
+{Reactions}
+❤️ (2) 
+
+[02/25/2024 08:39] guy_in0xnito
+Ig the token users pay for claiming fees !
+
+{Reactions}
+👍 
+
+[02/25/2024 08:43] nmirchev8
+What happens currently with collected fees?
+
+
+[02/25/2024 08:45] mctoady
+Uniswap fee switch not turned on, only current fees go to the LPs, this would be on top of the LP fees (separate)
+
+{Reactions}
+❤️ (2) 
+
+[02/25/2024 09:00] guy_in0xnito
+Going as rewards as reward tokens 
+Maybe thus part i can be wrong
+
+
+[02/25/2024 09:22] nmirchev8
+So if the 'enableFeeAmount' is called, this would be charging X amount fee for Uni stakers for the give tick spacing for all pools, which 'fee' goes to LPs
+
+
+[02/25/2024 10:14] forgebyola
+Is the REWARD_RECEIVER not basically the unistaker contract? or would it be different
+
+
+[02/25/2024 10:30] volokinn
+REWARD_RECEIVER = UniStaker.sol - https://github.com/code-423n4/2024-02-uniswap-foundation/blob/main/src/V3FactoryOwner.sol#L24
+
+{Reactions}
+👍🏼 
+
+[02/25/2024 10:31] forgebyola
+Okay
+
+
+[02/25/2024 11:16] kartoonjoy
+Started a thread.
+
+
+[02/25/2024 15:15] guy_in0xnito
+Hey where are 
+'rewardendtime' , 'lastcheckpoint' , 'scaledrewardrate' ,'rewardpertokenaccumulatedcheckpoint'' has been initialised?
+
+
+[02/25/2024 19:19] bendifran
+None of them are explicitly initialized
+
+
+[02/26/2024 10:52] guy_in0xnito
+@bendi / @Keating  created a pvt thread can you check that out please
+
+
+[02/26/2024 15:50] bendifran
+Hey all, please add myself (@bendi), @wildmolasses and @Keating when you create a private discussion.
+
+
+[02/27/2024 04:32] 0x11singh99
+@Keating  where can we find `REWARD_RECEIVER`  contract like UniswapPool is in v3-core
+
+
+[02/27/2024 04:55] .eperez
+The `UniStaker` contract is the `REWARD_RECEIVER`
+
+{Reactions}
+👍 (2) 
+
+[02/27/2024 13:48] kuprumion
+Hi @bendi , @Keating, @wildmolasses! Unfortunately the [DelegationSurrogate](https://github.com/code-423n4/2024-02-uniswap-foundation/blob/main/src/DelegationSurrogate.sol) submitted to the competition is obviously incomplete; e.g. it doesn't include the implementation of the `permit` function, used e.g. [here](https://github.com/code-423n4/2024-02-uniswap-foundation/blob/5298812a129f942555466ebaa6ea9a2af4be0ccc/src/UniStaker.sol#L301). Could you please confirm that using smth. like [this gist](https://gist.github.com/kuprumion/0210543da989b282b7d02cf6d14f6007) instead of `DelegationSurrogate` is fine, in particular for making PoCs, or could you please otherwise provide a source code of your own which makes the codebase complete? Thanks!
+
+
+[02/27/2024 13:53] yixxas
+We know that `STAKE_TOKEN` here is UNI. So the `permit` implementation would simply be the one used by UNI.
+
+
+[02/27/2024 14:06] kuprumion
+Ok, then I would like to get the confirmation from the sponsors that the deployed UNI source code is the one that should be used in the competition; or alternatively a link to the Github commit with the source code.
+
+
+[02/27/2024 14:21] mctoady
+Yes the token for uniswap staking will be the uniswap token
+
+
+[02/27/2024 14:28] bendifran
+Yes the Staking Token will definitely be UNI
+
+
+[02/27/2024 14:28] al_qa_qa
+I think there is a misunderstanding @kuprum, I will try to illustrate as good as I can. And ofc the sponser can correct the wrong parts.
+
+- Surrogate usage is only for holding UNI tokens, not else. But why should we do such a thing and lock our tokens?
+- The UNI ERC20 token is a Vote token, simply it is used in Gvernance.
+- In Order to participate in the Governance your tokens are not calculated instead your voting power
+- What is voting power? voting power is given to the address you `delegate` to
+- So the UNI token holder is not important, all we care about is the voting power.
+- When staking, you provide the `delegate` address, which will have the voting power of ther tokens you staked
+- Sothat you can participate in Governance using this  `delegate` adderess
+- And UNI tokens locked in the `surrogant`, you will take them back when `withdrawing`.
+- Why implementing such a pattern? This pattern is used in governance and Vote tokens to be safe for Vote token holders. As the Holder will be an address (surrogant contract), what can not transfer his tokens by itself. only the Unistaker can do this when `withdrawing`.
+
+{Reactions}
+🙏 (4) 👍🏼 (4) 
+
+[02/27/2024 14:28] bendifran
+The proposed rewards token is WETH though that is not 100% guarranteed
+
+
+[02/27/2024 14:30] bendifran
+Yes this is basically correct. The purpose of the surrogate contract is just to delegate and hold tokens, it's needed because of the way UNI delegation is designed.
+
+{Reactions}
+👍 (2) 
+
+[02/27/2024 14:30] kuprumion
+Cool, thanks for confirming! And is it the deployed version that should be used?
+
+
+[02/27/2024 14:31] al_qa_qa
+Yep. Uniswap governance and UNI token are on mainnet right now.
+
+{Reactions}
+👍 (2) 
+
+[02/27/2024 14:39] bendifran
+Correct
+
+{Reactions}
+👍 (2) 
+
+[02/27/2024 18:14] bahoz.eth
+hey @bendi , @wildmolasses , and @Keating
+what was the reason to use FactoryOwner as a passthrough for the factory?
+and I added you as friend, please accept.
+
+
+[02/27/2024 18:37] aamirusmani1552
+previous audit report public yet?
+
+
+[02/27/2024 19:54] tychaios.
+Not sponsor but it's because they want to limit what the owner can do over the factory, in this setup FactoryOwner will be able to call some setters and that's it so the DAO can be the admin of the factory owner and still adjust some stuff
+
+{Reactions}
+👍 
+
+[02/27/2024 20:41] bendifran
+As @Tychai0s explains, we want the contract as the owner so we can define specific rules around how it can interact with the factory. Also please open a private thread if you have a question, as opposed to direct DM.
+
+{Reactions}
+👍 
+
+[02/28/2024 00:06] eek.eth
+https://docs.unistaker.io/security/audits
+
+{Embed}
+https://docs.unistaker.io/security/audits
+UniStaker
+Uniswap protocol fee collection and reward distribution via UNI staking.
+
+
+[02/28/2024 04:39] 0x11singh99
+Are they fixed in the current in scope codebase ?
+
+
+[02/28/2024 04:42] 0x11singh99
+are these UNI token and Uniswap governance tokens are different ERC20 tokens Or it is one ?
+
+
+[02/28/2024 05:17] 0xabhay.
+same
+
+
+[02/28/2024 05:36] aamirusmani1552
+They are same I think. Check this: [Governance docs](https://docs.uniswap.org/contracts/v2/reference/Governance/governance-reference#:~:text=The%20Uniswap%20protocol%20is%20governed%20and%20upgraded%20by%20UNI%20token%20holders)
+
+{Embed}
+https://docs.uniswap.org/contracts/v2/reference/Governance/governance-reference
+Governance Reference | Uniswap
+The updated reference for the newly deployed Governor Bravo is available via Etherscan, some of the reference material below may be out of date.
+Code4rena - ARCHIVE-Q1-2024 - uniswap-feb23 [1209529156254306374].txt_Files/twitter_card_bg-5E6D6.jpg
+
+{Reactions}
+👍 
+
+[02/28/2024 06:50] al_qa_qa
+UniToken is the Uni Governance token
+
+{Reactions}
+👍 
+
+[02/28/2024 10:03] daniel526
+This
+
+
+[02/28/2024 10:07] kuprumion
+That's a great explanation, thanks for providing it! It was indeed a misunderstanding on my side.
+
+{Reactions}
+👍 
+
+[02/28/2024 10:27] alexczm
+any reason to use the `safeTransfer` for `PAYOUT_TOKEN` and `STAKE_TOKEN`?
+
+
+[02/28/2024 14:20] ivanfitro
+how to install it in wsl?
+
+
+[02/28/2024 14:21] al_qa_qa
+You can use npm, or simply you can just go to v3-core github repo, and copy past the contract 😂
+
+
+[02/28/2024 14:22] jes16jupyter
+forge install ... .  it works for me
+
+
+[02/28/2024 14:23] al_qa_qa
+it may be useless as the token is constant not arbitrary, but it is good to implement safe pattern any where
+
+{Reactions}
+10_10 
+
+[02/28/2024 14:29] ivanfitro
+the copy paste works xD
+
+{Reactions}
+👍 
+
+[02/28/2024 14:29] ivanfitro
+for me not works
+
+{Reactions}
+😐 
+
+[02/28/2024 16:30] alexczm
+indeed, better safe than sorry. but  I wanted to see the dev's assumption why he choose to use it beside 'good to implement safe patterns'
+
+
+[02/28/2024 19:51] ivanfitro
+One question, this contracts only will be used with WETH and UNI, not other tokens in real deployment?
+
+
+[02/28/2024 20:37] aamirusmani1552
+check [here](https://code4rena.com/audits/2024-02-unistaker-infrastructure#top:~:text=The%20following%20real%20tokens%20will%20be%20used%20for%20the%20tokens%20defined%20in%20these%20contracts)
+
+{Embed}
+https://code4rena.com/audits/2024-02-unistaker-infrastructure
+UniStaker Infrastructure | Code4rena
+$92,000 in USDC
+23 February 8:00 PM—4 March 8:00 PM
+Code4rena - ARCHIVE-Q1-2024 - uniswap-feb23 [1209529156254306374].txt_Files/c4-og-banner-70081.png
+
+{Reactions}
+👍 
+
+[02/28/2024 21:18] wildmolasses
+thanks everybody for helping each other out 🙏
+
+
+[02/29/2024 07:08] 0xaman.
+why there is a need of altering delegate?
+
+
+[02/29/2024 07:12] aamirusmani1552
+To transfer your voting power to some other address if that's what you asking.
+
+
+[02/29/2024 07:14] 0xaman.
+thanks for you response . why there is need to alter delegate
+
+
+[02/29/2024 07:23] aamirusmani1552
+Because when you stake tokens, you loose your voting power. That is why when you stake in the `UniStaker`, your tokens will be transferred to the `DelegationSurrogate` contract of the corresponding `delegatee` address. And this `DelegationSurrogate` will transfer the voting power to the `delegatee` so that he can vote. 
+
+This `delegatee` can be any address or your own address as well. You can always change this by using `alterDelegatee()` function.
+
+{Reactions}
+🙏 
+
+[02/29/2024 08:04] sean3416
+Fam, what can cause the `forge test` gets stuck in the middle? It stuck here:
+
+{Attachments}
+Code4rena - ARCHIVE-Q1-2024 - uniswap-feb23 [1209529156254306374].txt_Files/image-7E118.png
+
+
+[02/29/2024 08:04] sean3416
+I know there are many other tests in `UniStaker.integration.t.sol` it hasn't performed, but it just won't proceed
+
+
+[02/29/2024 08:17] sean3416
+nvm..it proceeded after a few mins...
+
+
+[02/29/2024 11:59] haxatron1
+@kartoonjoy | C4🎇🎇 the reward table has not been fixed yet https://code4rena.com/audits/2024-02-unistaker-infrastructure
+
+{Embed}
+https://code4rena.com/audits/2024-02-unistaker-infrastructure
+UniStaker Infrastructure | Code4rena
+$92,000 in USDC
+23 February 8:00 PM—4 March 8:00 PM
+Code4rena - ARCHIVE-Q1-2024 - uniswap-feb23 [1209529156254306374].txt_Files/c4-og-banner-39476.png
+
+
+[02/29/2024 11:59] haxatron1
+So is it 98000 or 92000?
+
+
+[02/29/2024 12:00] haxatron1
+@PaperParachute | C4
+
+
+[02/29/2024 12:00] haxatron1
+And what happens if no HM found? Will HM be distributed or pot lowered?
+
+
+[02/29/2024 12:06] kartoonjoy
+Thanks for the reminder. The RSVP is correct. Will update the repo in a few.
+
+
+[02/29/2024 14:54] bendifran
+Likely doing lots of rpc requests which can take time depending on your connection with the node
+
+{Reactions}
+thankyou 
+
+[02/29/2024 19:40] ivanfitro
+How you will track the voting power? Because i dont see any function to achieve it
+
+
+[02/29/2024 19:46] aamirusmani1552
+it's available through UNI token
+
+{Reactions}
+👍 
+
+[03/01/2024 13:09] guy_in0xnito
+Who recieves the fees from the pool 
+The person who pays for them ?
+
+
+[03/01/2024 13:23] aamirusmani1552
+Yes. Someone will send a particular amount of reward tokens set in payout amount and in return will be able to get back the fees accrued in a pool.
+
+{Reactions}
+🙌 (2) 
+
+[03/01/2024 17:13] wildmolasses
+Thanks @Aamir and others for helping us answer Qs
+
+{Reactions}
+hi5 (2) 
+
+[03/01/2024 19:30] zhizhi1348
+if searcher or MEVs send reward token to claim Pools fee , so what's liquidity provider gets instead, cause they don't receive any commission anymore right?
+
+
+[03/01/2024 23:27] guy_in0xnito
+Can there be more than one delegate or beneficiary for a account?
+
+
+[03/01/2024 23:38] forgebyola
+I believe there can be for each of the different deposits an account has
+
+
+[03/01/2024 23:39] forgebyola
+Each deposit/stake may have it's own delegate and beneficiary
+
+
+[03/02/2024 00:04] guy_in0xnito
+Can the sponsors please confirm this ,!
+
+
+[03/02/2024 00:06] mctoady
+one address can create multiple deposits, with different deposit ids
+each deposit can specify their own delegatee/beneficiary
+
+{Attachments}
+Code4rena - ARCHIVE-Q1-2024 - uniswap-feb23 [1209529156254306374].txt_Files/Screenshot_2024-03-02_at_09.06.21-112F5.png
+
+
+[03/02/2024 07:41] sean3416
+Any buddy can help me understand this? `/// @notice A dead-simple contract whose only purpose is to hold governance tokens on behalf of
+/// users while delegating voting power to one specific delegatee. This is needed because a single
+/// address can only delegate its (full) token weight to a single address at a time. Thus, when a
+/// contract holds governance tokens in a pool on behalf of disparate token holders, those holders
+/// are typically disenfranchised from their governance rights.`
+
+
+[03/02/2024 07:41] sean3416
+I dont quite get it --- if the UniStaker do not create a surrogate for each delegatee, instead it just keep the deposited UNIs in itself but it does the accounting well, then how it will lead to "those holders are typically disenfranchised from their governance rights." ??
+
+
+[03/02/2024 07:50] sean3416
+I don't get the part "disenfranchised from their governance rights" --- what can be the situation it is referring to?
+
+
+[03/02/2024 08:25] mctoady
+basically:
+
+in traditional staking systems, you have to choose between staking the tokens or voting withthem in governance, because all the staked tokens are intermingled in one contract.
+
+UniStaker uses the surrogate contract so each contract is only holding the delegated stake (voting power) of a certain address, so tokens can be staked without losing their ability to vote with those tokens
+
+{Reactions}
+💯 (2) 
+
+[03/02/2024 08:38] sean3416
+Thank you for the reply~ one more thought: what if the tokens are staked in one contract but the numbers are well accounted (delegatee => amount), then are the staked tokens in one place still considered "intermingled"?
+
+
+[03/02/2024 08:52] mctoady
+If you built your own governance contract that queried the staking contract to calculate voting power it would probably be possible to delegate without using surrogates. However Uniswap's delegating logic (in the $UNI contract) is set up to delegate the entire balance of an address to the delegatee, so the surrogate contracts are required to get around this
+
+{Reactions}
+thankyou 
+
+[03/02/2024 09:08] sean3416
+Ah, neat. I saw the UNI code of _delegate(), now I understand the comments. Thx 4 ur help~
+
+
+[03/02/2024 09:40] aamirusmani1552
+same question I have
+
+
+[03/02/2024 09:55] visualbits
+LP fees are calculated separately from protocol fees.
+
+{Reactions}
+👍 
+
+[03/02/2024 11:17] superman_i4g
+Is it only me or C4 is not loading? @thebrittfactor | C4
+
+
+[03/02/2024 11:18] al_qa_qa
+The Liquidity provider fees are collected by `v3-pool::collect()`
+While protocol fees are collected using `v3-pool::collectProtocol()`
+
+{Reactions}
+👍 
+
+[03/02/2024 11:21] aamirusmani1552
+working fine on my side
+
+
+[03/02/2024 11:22] superman_i4g
+Dayum, I will be so pissed if my report doesn’t load back cus it’s not working here ffs 🤦🏽‍♂️
+
+
+[03/02/2024 16:20] thisvishalsingh
+@bendi ser please see the private thread, I have to confirm those qns, sorry I am in little hurry bcz of college examination.
+
+
+[03/02/2024 16:54] thisvishalsingh
+What is the type of protocol? Is it staking pool or staking?
+
+
+[03/02/2024 17:18] aamirusmani1552
+Docs: https://docs.unistaker.io/
+
+{Embed}
+https://docs.unistaker.io/
+UniStaker
+Uniswap protocol fee collection and reward distribution via UNI staking.
+
+
+[03/02/2024 17:19] thisvishalsingh
+ik, ty
+
+
+[03/02/2024 18:11] kartoonjoy
+The pot amounts have been clarified in the README. Thanks for everyone's patience. Have good weekend.
+
+{Reactions}
+hi5 (2) 
+
+[03/02/2024 18:56] aodkgkrogrogoovg2o3btivr
+i am curious, has someone found a high in this scope ?
+
+{Reactions}
+🙏 
+
+[03/02/2024 19:58] visualbits
+> If any valid Mediums and Highs are found, the HM awards will increase to $69,000.
+
+Do you mean valid High found? (It has edge case)
+
+
+[03/02/2024 19:59] nmirchev8
+What about M?
+
+
+[03/02/2024 20:00] aodkgkrogrogoovg2o3btivr
+M too
+
+
+[03/02/2024 20:00] aodkgkrogrogoovg2o3btivr
+is someone find a vulnerability with a great impact ?
+
+
+[03/02/2024 20:01] kartoonjoy
+Yes, so if H's are also found, then the pot increments up.
+
+{Reactions}
+👍 
+
+[03/02/2024 20:59] nmirchev8
+From 90K to 13K in rewards 😁
+
+{Reactions}
+🤪 (6) 
+
+[03/02/2024 21:15] 0xhelium
+What's deadline for this audit?
+
+
+[03/02/2024 21:17] forgebyola
+4th
+
+
+[03/02/2024 21:18] forgebyola
+The math in this was done by a genius btw. I don't even know how but everything just seems to work lol. Good work
+
+{Reactions}
+👍 
+
+[03/02/2024 21:23] superman_i4g
+It’s synthetix reward mechanism ser. Nothing new🌚
+
+
+[03/02/2024 21:42] kartoonjoy
+Sounds like you have a challenge on your hands. It's only 13K if you don't find HM. Game on!
+
+
+[03/02/2024 22:25] forgebyola
+There would be HMs, that's for sure
+
+{Reactions}
+4739_Skeletor 
+
+[03/02/2024 22:26] okolicodes
+Pls @kartoonjoy | C4🎇🎇 The c4 site hasn’t been loading for sometime on my devices 
+I don’t really know what’s wrong
+
+
+[03/03/2024 01:57] thisvishalsingh
+@kartoonjoy | C4🎇🎇 hey can you remind to spons reply my private thread qn please, it has been more than 12+ hours
+
+{Reactions}
+🫡 
+
+[03/03/2024 02:04] mctoady
+It's saturday night/sunday morning, im sure they'll get around to it :salute:
+
+{Reactions}
+👍 (2) 
+
+[03/03/2024 06:05] thisvishalsingh
+Challenge Accepted!
+
+{Reactions}
+🎉 
+
+[03/03/2024 10:28] superman_i4g
+An unusual question to ask; 
+If my deposit ID is 1 and I want to stakeMore and requires passing the deposit ID (in test), any idea how to pass this, since it’s involves deposit Identifier or sort..? @visualbits , @nmirchev8 , @Al-Qa-qa  any idea on this?
+
+
+[03/03/2024 10:30] aamirusmani1552
+stake function returns depositId of type depositIdentifier
+
+
+[03/03/2024 10:30] al_qa_qa
+You can initialze the value as 
+```
+UniStaker.DepositIdentifier id = 1
+```
+
+
+[03/03/2024 10:31] superman_i4g
+Ah, so I initialize it in the test and then pass the input in the stakeMore paramater?
+
+{Reactions}
+👍 
+
+[03/03/2024 10:37] visualbits
+```
+    DepositIdentifier depositId = DepositIdentifier.wrap(x);
+```
+
+
+[03/03/2024 10:39] superman_i4g
+Understood;
+Thank you 🙏🏽
+
+{Reactions}
+🙏 
+
+[03/03/2024 21:26] arie71.
+what the source and why the use ```"v3-periphery/interfaces/ISwapRouter.sol``` 
+thus project had failed to compile
+
+
+[03/03/2024 21:44] arie71.
+fix and compiled
+
+
+[03/04/2024 04:46] akshaysrivastav
+please see this https://discord.com/channels/810916927919620096/1213552830842150962/1214070825863487519
+
+
+[03/04/2024 06:39] mangoeth
+100 weth is a realistic rewards amount at some point in time? Anyone?
+
+
+[03/04/2024 06:55] mctoady
+I believe the example in the docs uses 10 WETH as an example, 100 might be a bit steep but cant confirm
+
+
+[03/04/2024 06:59] pfapostol
+The size of the reward depends on how much fee is accumulated in the controlled pools. and can be settled via government timelock
+
+
+[03/04/2024 07:06] mangoeth
+Right, it implies that anyone claims when they see the opportunity of profit in the value of both assets with the  weth they have to provide for it. Assuming weth is the reward token. 
+The reward notification in the staking contract cant be called for micro deposits tho, but rather decent amounts in right time intervals, from what i understand.
+
+
+[03/04/2024 07:07] mangoeth
+Thank you for the reminder, had a vague number in mind but wasnt shure if it was 10 or 100. 👍
+
+
+[03/04/2024 08:23] forgebyola
+I believe the notification is called whenever fees are claimed successfully
+
+
+[03/04/2024 10:26] mgf15
+how do you fix it ?
+
+
+[03/04/2024 10:46] mgf15
+fixed
+
+
+[03/04/2024 11:28] 0xabhay.
+done with this, well-written code base. good luck everyone 😉
+
+
+[03/04/2024 11:40] thisvishalsingh
+Who is still fighting for HM?
+
+
+[03/04/2024 12:01] superman_i4g
+The H🥹
+
+{Reactions}
+💪 (2) 👽 
+
+[03/04/2024 12:43] forgebyola
+Airtight as hell
+
+
+[03/04/2024 12:43] forgebyola
+Kudos to Devs and good luck everyone
+
+
+[03/04/2024 12:43] forgebyola
+The codebase got hands unfortunately
+
+
+[03/04/2024 12:56] haxatron1
+Lookout and judge is going to have an easy time with this one
+
+{Reactions}
+4739_Skeletor (3) 🔥 (2) 
+
+[03/04/2024 12:56] haxatron1
+Free $ for them
+
+
+[03/04/2024 13:01] 0xabhay.
+@haxatron yes!!
+
+
+[03/04/2024 13:02] 0xabhay.
+How many submissions do you guys think this contest will have?
+
+
+[03/04/2024 13:06] haxatron1
+Only qa analysis and chatgpt submissions 😁
+
+{Reactions}
+👽 (3) 😭 (3) 
+
+[03/04/2024 13:22] tychaios.
+Yeah, unistaker got hands
+
+
+[03/04/2024 13:41] 0xg03.14
+There's always one more  bug.
+
+{Reactions}
+psyduck (5) 4739_Skeletor (6) 
+
+[03/04/2024 16:07] jes16jupyter
+Okay, I am done with this one. GL everyone!
+
+
+[03/04/2024 16:52] justbuks
+Code4rena website is down a few hours to submission deadline
+
+
+[03/04/2024 16:52] forgebyola
+Try vpn
+
+
+[03/04/2024 16:53] pfapostol
+it is up for me
+
+
+[03/04/2024 16:53] forgebyola
+This has been happening since 2 days
+
+
+[03/04/2024 16:53] forgebyola
+It seems to be localized for certain users
+
+
+[03/04/2024 17:01] justbuks
+thanks it worked
+
+
+[03/04/2024 19:21] thisvishalsingh
+finally done!
+
+
+[03/04/2024 19:25] sockdrawermoney
+@here we are working on investigating issues reported regarding global server availability, which we think might be related to undersea cable disruption (see #😃chat)
+
+if you have had difficulty accessing the site, can you please react to this with the flag of your location?
+
+{Reactions}
+🇳🇬 (4) 
+
+[03/04/2024 19:42] justbuks
+i still cant submit 
+i tried using vpn but it wouldnt allow me log in
+
+
+[03/04/2024 19:45] irving6969
+can we extend the contest for a few hours?
+
+{Reactions}
+👎 
+
+[03/04/2024 19:51] delerrh
+This is another issue that you should have fixed earlier, not now.
+
+
+[03/04/2024 19:56] forgebyola
+It lasted pretty long
+
+
+[03/04/2024 19:57] irving6969
+they did extend tho
+
+
+[03/04/2024 19:57] forgebyola
+They did?
+
+
+[03/04/2024 19:57] irving6969
+look at c4 , it will end in 1 day
+
+
+[03/04/2024 19:57] irving6969
+i think they extended
+
+
+[03/04/2024 19:57] forgebyola
+Oh okay
+
+
+[03/04/2024 19:58] forgebyola
+That's good cause of the site disruption
+
+
+[03/04/2024 19:58] forgebyola
+can we have confirmation of the extension?
+
+
+[03/04/2024 20:01] knownfactc4_29311
+Yes there has been an extension, please see the post in announcements: https://discord.com/channels/810916927919620096/810929015509483554/1214301459680600115
+
+{Reactions}
+👍 (2) 
+
+[03/04/2024 20:01] forgebyola
+Thank you
+
+
+[03/04/2024 20:02] forgebyola
+Doesn't matter how long this extends though. Code is a brickwall:4739_Skeletor: :4739_Skeletor:
+
+{Reactions}
+😄 (9) 
+
+[03/04/2024 20:32] haxatron1
+Yea it doesnt matter
+
+
+[03/04/2024 20:32] haxatron1
+Just more time spent on perfecting that qa report
+
+{Reactions}
+hi5 (6) ✅ 
+
+[03/04/2024 20:33] forgebyola
+You got it, time to flesh out that QA report. May the best QA win
+
+
+[03/04/2024 20:36] osmanozdemir1
+Just be careful and not add issues that were already in the bot report while trying to elevate those QA reports 😄
+
+
+[03/04/2024 20:39] osmanozdemir1
+If no issues found, people might rigorously escalate those QA reports and try to make them grade C
+
+
+[03/04/2024 22:56] mctoady
+Can we confirm the `Code Quality Recommendations` from the ToB audit are out of scope? 
+https://docs.unistaker.io/UniStaker-Trail-of-Bits-Audit-Report.pdf
+
+
+[03/04/2024 23:33] irving6969
+If U’re concerned about permint front run , they already put that into known issues
+
+
+[03/04/2024 23:40] mctoady
+no just meant in general people padding their QAs with "use twostep"/"claimReward no return value" etc
+
+
+[03/05/2024 07:58] ihtishamsudo
+
+
+{Attachments}
+Code4rena - ARCHIVE-Q1-2024 - uniswap-feb23 [1209529156254306374].txt_Files/WhatsApp_Image_2024-03-05_at_12.56.46_PM-C9EFB.jpeg
+
+
+[03/05/2024 08:11] forgebyola
+who says we didn't
+
+{Reactions}
+🤣 (2) 
+
+[03/05/2024 20:02] C4
+**🚨 AUDIT ALERT**
+
+@🐺wardens  The **UniStaker Infrastructure** audit is now closed! Huge thanks to everyone who participated 🔍, whether you submitted a finding or not.
+
+What's next: The sponsor team and judge will review the findings over the next couple of weeks. Keep an eye on #📢announcements for regular updates on how the audit is progressing through awarding 🤑🏆, judging 🧑‍⚖️ and reporting 📜. Feel free to ping a Contest-Admin if you have questions along the way!
+
+
+[03/05/2024 20:44] forgebyola
+Curious to see the number of submissions
+
+
+[03/05/2024 20:47] aamirusmani1552
+393
+
+{Reactions}
+code4rena (6) 
+
+[03/06/2024 00:31] guy_in0xnito
+https://tenor.com/view/they-had-us-in-the-first-half-not-gonna-lie-gif-13620240
+
+{Embed}
+https://tenor.com/view/they-had-us-in-the-first-half-not-gonna-lie-gif-13620240
+Code4rena - ARCHIVE-Q1-2024 - uniswap-feb23 [1209529156254306374].txt_Files/they-had-us-in-the-first-half-not-gonna-li-BC7C9.png
+
+{Reactions}
+🤪 (5) 🎈 (2) 
+
+[03/16/2024 11:45] 0xabhay.
+https://gov.uniswap.org/t/temperature-check-activate-uniswap-protocol-governance/22936/86
+
+{Embed}
+https://gov.uniswap.org/t/temperature-check-activate-uniswap-protocol-governance/22936/86
+[Temperature Check] - Activate Uniswap Protocol Governance
+Hi all - I wanted to give a quick update on this proposal and the next steps in its implementation.  TL;DR, we are running additional audits on the protocol upgrade. Due to that, we now expect to post our on-chain vote in mid-April (It’s possible this may change pending the results of those audits).  Amendment  A group of delegates proposed an a...
+Code4rena - ARCHIVE-Q1-2024 - uniswap-feb23 [1209529156254306374].txt_Files/c1a66c6f180b7119a4481592a300e5a09cc0f2de-12E6D.png
+
+
+[03/19/2024 04:22] 0xg03.14
+So there is only one valid issue..?
+
+
+[03/19/2024 04:23] 0xabhay.
+yes.
+
+
+[03/19/2024 04:23] 0xg03.14
+and there will be a mitigation review at end of march. so results this week ..?
+
+
+[03/19/2024 04:24] 0xabhay.
+yes most probably.
+
+
+[03/19/2024 04:25] 0xg03.14
+cant belive this code have  bugs.
+
+
+[03/19/2024 04:25] 0xg03.14
+it was solid codebase
+
+
+[03/19/2024 04:25] 0xg03.14
+hell of a payday for those who found that issue ig.
+
+
+[03/19/2024 04:26] 0xabhay.
+yes and also the codebase was audited by TOB .
+
+
+[03/19/2024 06:30] pfapostol
+and you can't discuss it in public channel until the results are disclosed
+
+{Reactions}
+👍 
+
+[03/19/2024 09:34] forgebyola
+Can't wait to see those bugs
+
+
+[03/19/2024 09:52] superman_i4g
+THE BUG🌚
+
+
+[03/19/2024 10:03] hunter_w3b
+we have to wait🥹
+
+
+[03/19/2024 11:25] tigerfrake
+Lmao
+
+
+[03/19/2024 12:05] volokinn
+So, we expect the results to be announced soon?
+
+
+[03/19/2024 12:26] 0xhelium
+Yes, PJQA had already concluded, so maybe this afternoon or tomorrow
+
+{Reactions}
+👍 
+
+[03/19/2024 19:26] koala1201au
+When will the results be announced?
+
+
+[03/19/2024 19:27] koala1201au
+PJQA stands for?
+
+
+[03/19/2024 19:38] 0xhelium
+Post judging QA
+
+
+[03/19/2024 19:48] koala1201au
+thanks for your kind
+
+{Stickers}
+Code4rena - ARCHIVE-Q1-2024 - uniswap-feb23 [1209529156254306374].txt_Files/813950952436531213-12808.png
+
+
+[03/20/2024 02:59] kaveyjoe
+i think Today
+
+
+[03/20/2024 04:20] 0xabhay.
+yes most probably since icon appearing on profiles
+
+
+[03/20/2024 14:30] 0xnirlin
+:prayingpepe:
+
+{Reactions}
+😂 
+
+[03/20/2024 14:33] haxatron1
+Once again guys
+
+
+[03/20/2024 14:33] haxatron1
+Dont get your hopes up
+
+{Reactions}
+🪓 
+
+[03/20/2024 14:33] haxatron1
+😬
+
+
+[03/20/2024 14:49] tigerfrake
+😂😂
+
+
+[03/20/2024 14:56] forgebyola
+Stop commenting. Anytime you guys comment I have to click to check if it's the results lol:psyduck:
+
+{Reactions}
+😂 (5) same 
+
+[03/20/2024 15:01] 0xg03.14
+Results today..?
+
+
+[03/20/2024 15:34] brivan
+Isn't it that only 1 Medium finding is confirmed? What are you waiting for xD?
+
+{Reactions}
+😂 (3) 
+
+[03/21/2024 07:09] kaveyjoe
+How do you know sir?
+
+{Reactions}
+😕 
+
+[03/21/2024 09:47] haxatron1
+He got it from here 😂
+
+
+[03/21/2024 09:47] haxatron1
+^
+
+
+[03/21/2024 09:49] 0xabhay.
+I think, there can be more than one issue but they only want to solve that particular issue.
+
+{Reactions}
+👍 
+
+[03/21/2024 14:22] al_qa_qa
+Guys I participated in `pooltogethar` after Uniswap. And `pooltogethar` rewards annonced. Why this delay?
+
+
+[03/21/2024 14:28] 0xnirlin
+come back next month. :prayingpepe:
+
+{Reactions}
+😢 (3) 
+
+[03/21/2024 14:48] 0xhelium
+You have backstage I think, so maybe ask in backstage channel
+
+{Reactions}
+👍 
+
+[03/21/2024 16:46] 0xg03.14
+Happening today..?🥲
+
+
+[03/22/2024 16:33] kaveyjoe
+wait Till April😂😂
+
+{Reactions}
+🥺 
+
+[03/22/2024 19:07] forgebyola
+Tears https://discord.com/channels/810916927919620096/810929015509483554/1220800726813376688
+
+
+[03/22/2024 19:54] koala1201au
+when it will finish?
+
+
+[03/22/2024 19:54] koala1201au
+who knows about that?
+
+
+[03/24/2024 13:19] alchmy952
+Is it all submissions that will be reviewed or just the 3 selected submissions?
+
+
+[03/24/2024 13:33] kaveyjoe
+
+
+{Attachments}
+Code4rena - ARCHIVE-Q1-2024 - uniswap-feb23 [1209529156254306374].txt_Files/IMG_6926-76336.png
+
+
+[03/24/2024 13:42] alchmy952
+Wow
+
+
+[03/24/2024 15:45] haxatron1
+Where did u find this
+
+
+[03/24/2024 15:46] kaveyjoe
+https://github.com/code-423n4/org/discussions/155
+
+{Embed}
+https://github.com/code-423n4/org/discussions/155
+Appeals process, v1 · code-423n4 org · Discussion #155
+Background During post-judging QA for the recent UniStaker Infrastructure audit: the sponsor team contested the validity and risk of three findings, and an anonymous judge submitted an amicus brief...
+Code4rena - ARCHIVE-Q1-2024 - uniswap-feb23 [1209529156254306374].txt_Files/155-1D43B
+
+
+[03/24/2024 16:21] alchmy952
+Maybe the sponsors' "design choices" should be made clear to audit participants in upcoming audits
+
+
+[03/25/2024 15:01] 0xg03.14
+:4739_Skeletor:
+
+
+[03/26/2024 16:16] lsaudit
+Is there any time-frame for the appeal process? Days? Weeks? Months? Years 🙂 ?
+
+{Reactions}
+😂 (3) 
+
+[03/26/2024 16:29] xyzbtchunt
+Months
+
+
+[03/26/2024 20:17] sp1cymeatball
+It is done. No H/Ms, only QA.
+
+{Reactions}
+🔥 
+
+[03/26/2024 20:35] haxatron1
+where?
+
+
+[03/26/2024 20:35] haxatron1
+from where did u find this info
+
+
+[03/26/2024 20:35] kaveyjoe
+Check comment on issues
+
+
+[03/26/2024 20:37] visualbits
+@minhtrng You predicted a result, why did you delete your message? 😄
+
+
+[03/26/2024 20:37] haxatron1
+welp
+
+
+[03/26/2024 20:37] haxatron1
+gg
+
+
+[03/26/2024 20:38] haxatron1
+there goes $62500 for c4 😥
+
+
+[03/26/2024 20:40] haxatron1
+congrats to those who got grade-A
+
+
+[03/26/2024 20:40] visualbits
+It will be distributed among the QAs.
+
+
+[03/26/2024 20:40] haxatron1
+no their original agreement still holds
+
+
+[03/26/2024 20:40] haxatron1
+so unistaker pays 13k and c4 has to pay 75.5k
+
+
+[03/26/2024 20:41] forgebyola
+Wow
+
+
+[03/26/2024 20:42] forgebyola
+Uniswap really did not want to spend anything. The protocol was so tight to begin with 😂
+
+
+[03/26/2024 20:43] forgebyola
+What a codebase. I wish unistaker good luck on the outside
+
+
+[03/26/2024 20:44] bronze_pickaxe
+😮
+
+
+[03/26/2024 20:45] haxatron1
+congrats to everyone who submitted grade-a qa
+
+
+[03/26/2024 20:46] haxatron1
+4 ppl
+
+
+[03/26/2024 20:46] haxatron1
+well deserved!
+
+
+[03/26/2024 20:59] 0xhelium
+Not me
+
+{Reactions}
+😂 
+
+[03/26/2024 21:00] forgebyola
+Haha
+
+
+[03/26/2024 21:01] pa6kuda
+I have no findings but as I see situation is interesting. So can someone in explain what is happening?
+As I understand, there was 3 H, but UniStaker didn't take them because they think it's not valid? And because that Code4rena need to pay UniStaker because no one found any valid bugs or what?
+
+{Reactions}
+😂 
+
+[03/26/2024 21:21] minh___
+My QA got grade-C real quick, and I only spent a day on it 😄
+
+So I dunno, didnt want to imply I had a good report I guess
+
+{Reactions}
+😄 
+
+[03/27/2024 06:40] jvorex
+same there was no point in arguing. First pass my qa survived so I thought yeah grade be then second pass nah. I think some good ones got grade c because initially it seemed the mediums would be acceptable and a lot of those good attack vector mediums were downgraded to Grade B so needs to make some room
+
+
+[03/27/2024 14:45] jes16jupyter
+Hi so what is the expected payout for a,b,c?
+
+{Reactions}
+😂 (2) 
+
+[03/27/2024 15:19] lsaudit
+when do we expect to see results then?
+
+
+[03/27/2024 15:19] lsaudit
+any chances for this week?
+
+
+[03/27/2024 15:52] mctoady
+imagine today or tomorrow
+
+
+[03/27/2024 22:17] liveactionllamac4
+🤑 🎉 Awards for **UniStaker Infrastructure**:
+
+$7,783.56 USDC » CodeWasp (@kuprum, @slylandro_star, @spaghetticode_sentinel, and @audithare)
+$6,009.38 USDC » @Al-Qa-qa
+$5,987.35 USDC » @0xlemon
+$5,987.35 USDC » @Breeje
+$5,987.35 USDC » @DadeKuma
+$5,987.35 USDC » Shield (@Dravee, @0xA5DF, @Viraz, and @Udsen)
+$5,987.35 USDC » @SpicyMeatball
+$5,987.35 USDC » Trust
+$5,987.35 USDC » @lsaudit
+$5,987.35 USDC » @osmanozdemir1
+$716.32 USDC » @Aamir
+$716.32 USDC » @ZanyBonzy
+$716.32 USDC » @peanuts
+$694.30 USDC » @0xdice91
+$694.30 USDC » @AlexCzm
+$694.30 USDC » @BAHOZ
+$694.30 USDC » @Bauchibred
+$694.30 USDC » Fassi_Security (@bronze_pickaxe and @mxuse)
+$694.30 USDC » @PTolev
+$694.30 USDC » @cheatc0d3
+$694.30 USDC » @gesha17
+$694.30 USDC » @haxatron
+$694.30 USDC » @imare
+$694.30 USDC » @jesjupyter
+$694.30 USDC » @kutu
+$694.30 USDC » @marchev
+$694.30 USDC » @merlinboii
+$694.30 USDC » @nnez
+$694.30 USDC » @radev_sw
+$694.30 USDC » @twicek
+$694.30 USDC » @visualbits
+$346.96 USDC » roguereggiant
+$266.89 USDC » @McToady
+$266.89 USDC » @hunter_w3b
+$266.89 USDC » @kaveyjoe
+$22.02 USDC » @0xepley
+$22.02 USDC » @Lin
+$22.02 USDC » @msk0333
+$22.02 USDC » @myd8418
+$22.02 USDC » @SAQ
+$22.02 USDC » @Sathish9098
+$22.02 USDC » @Aariiif
+$22.02 USDC » @cudo
+$22.02 USDC » @emerald7017
+$22.02 USDC » @Fouzantanveer
+$22.02 USDC » @hassanshakeel13
+$22.02 USDC » @ihtishamsudo
+
+🏁 Findings summary
+--------------------------------------—
+High risk findings: 0
+Med risk findings: 0
+QA reports: 31 (Best: CodeWasp)
+Advanced analysis reports: 20 (Best: roguereggiant)
+
+Awards will be distributed on Polygon within the next week. Congratulations all!  💸 💸 💸
+
+*Note: If you participated in this audit and don’t see your name on this list, please wait until the report is published and the findings repo is made public to check on your submissions.*
+
+{Reactions}
+🔥 (22) nice (5) 🙌 (2) 4739_Skeletor 
+
+[03/27/2024 22:24] brivan
+This is crazy, QA submission gets 7k payout, I know bcz no HM found, still a crazy thing.
+Congrats to all winners
+
+
+[03/28/2024 04:20] tigerfrake
+The lesson I've learnt from this contest is next level insane.
+😎 Congrats champs!
+
+
+[03/28/2024 06:05] 0xlemon
+Congrats guys!!! This was a tough one.
+
+
+[03/28/2024 08:36] alexfilippov314
+Hi! Could someone please assist me in understanding something? I believe I submitted an issue (among some others) with recommendations that were implemented in these PRs: https://github.com/uniswapfoundation/UniStaker/issues/66, https://github.com/uniswapfoundation/UniStaker/issues/67. It seems a bit strange to me that I don't see my name on the list. I just want to confirm that there is no mistake.
+
+{Embed}
+https://github.com/uniswapfoundation/UniStaker/issues/66,
+Issues · uniswapfoundation/UniStaker
+Staking infrastructure for fee collection and reward distribution for the Uniswap protocol. - Issues · uniswapfoundation/UniStaker
+Code4rena - ARCHIVE-Q1-2024 - uniswap-feb23 [1209529156254306374].txt_Files/UniStaker-543AD
+
+{Embed}
+https://github.com/uniswapfoundation/UniStaker/issues/67.
+Issues · uniswapfoundation/UniStaker
+Staking infrastructure for fee collection and reward distribution for the Uniswap protocol. - Issues · uniswapfoundation/UniStaker
+Code4rena - ARCHIVE-Q1-2024 - uniswap-feb23 [1209529156254306374].txt_Files/UniStaker-543AD
+
+
+[03/28/2024 09:00] al_qa_qa
+Issues are visible in the repo that is in Code4Rena GitHub account, not UniSwapFoundation Original Repo.
+
+You can access this repo once the report is published
+
+
+[03/28/2024 09:05] alexfilippov314
+Thank you, I understand it. I mean that it is a bit strange that the protocol implemented recommendations from one of my issues right after the contest but I'm not mentioned on the list. Once the report will be published confirming whether it was a mistake is kind of late 🙂
+
+
+[03/28/2024 09:07] alexfilippov314
+I don't have backstage access yet btw, so I can't verify it by myself
+
+
+[03/28/2024 09:34] saint6704
+congrats ser
+
+
+[03/28/2024 10:24] al_qa_qa
+1. Since no HM, you need to have a QA grade B at least or Analysis Grade B at least to be on the list.
+2. The sponser can confirm an issue that marked as Invalid in the contest.
+
+
+[03/28/2024 10:25] al_qa_qa
+Thanks alot sir 🫡
+
+
+[03/28/2024 10:58] alexfilippov314
+Thank you again, but I am already aware of that. I'm not trying to question the correctness of the judgment or anything. I just want to eliminate the human factor and confirm that it is not a mistake, as I am not able to do it myself.
+
+
+[03/28/2024 11:02] al_qa_qa
+I think it is not a mistake, as Sponsers can reference any issue submitted by any warden in the contest in his main repo.
+
+
+[03/28/2024 12:37] afriauditor
+@Al-Qa-qa congratulations bruh!
+
+
+[03/28/2024 12:39] al_qa_qa
+Thanks a lot 🫡
+
+{Reactions}
+👍 (2) 
+
+[03/28/2024 14:19] hunter0x01
+@Al-Qa-qa congrats brother 👏
+
+
+[03/28/2024 14:34] sovaslava9
+How it could be grade-a, if it about tests?) its out of scope - https://github.com/code-423n4/2024-02-uniswap-foundation-findings/blob/main/data/CodeWasp-Q.md
+
+{Reactions}
+4739_Skeletor 🤔 
+
+[03/28/2024 15:27] al_qa_qa
+Thanks a lot sir 👍 🫡
+
+{Reactions}
+👏 
+
+[03/29/2024 01:26] mylifechangefast.eth_70767
+@Aamir   congrats
+
+
+[03/29/2024 05:09] aamirusmani1552
+Thanks brother
+
+{Reactions}
+🔥 
+
+[04/10/2024 21:27] itsmetechjay
+ℹ️ This channel is pending archive.   As a result, any private threads will be permanently deleted on Friday, 19 April 2024. Please make sure to grab anything you might need before then.
+
+
+[04/18/2024 20:24] itsmetechjay
+ℹ️ Reminder: this channel will be deleted in 24 hours.
+
+
+==============================================================
+Exported 329 message(s)
+==============================================================
